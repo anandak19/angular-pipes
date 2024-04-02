@@ -1,0 +1,42 @@
+<div class="table-container">
+
+  <div class="table-container__heading">
+    <h2 class="table-container__title">Student's Details</h2>
+    <p class="table-container__date">-{{ currentDate | date: 'dd-MM-YYYY' }}-</p>
+
+  </div>
+    <table class="table-container__table">
+        <thead class="table-container__table-head">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>Department</th>
+                <th>Total Mark</th>
+                <th>Percentage</th>
+                <th>Grade</th>
+                <th>Address</th>
+                <th>Scholarship</th>
+                <th>Phone</th>
+            </tr>
+        </thead>
+        <tbody class="table-container__table-body">
+          @for (student of students; track student.id) {
+            <tr>
+              <td>{{ student.id | number: '3.' }}</td>
+              <td>{{ student.name  | genderCheck : student.gender}}</td>
+              <td>{{ student.gender | lowercase}}</td>
+              <td>{{ student.age }}</td>
+              <td>{{ student.department | uppercase}}</td>
+              <td>{{ student.totalMark | number:'3.0-1'}}</td>
+              <td>{{ student.percentage | percent:'2.0-1'}}</td>
+              <td>{{ student.grade  | uppercase }}</td>
+              <td>{{ student.address }}</td>
+              <td>{{ student.scholarship | currency:'INR':'symbol':'5.1-2' }}</td>
+              <td>{{ student.phone | slice: 3}}</td>
+            </tr>
+          }
+          </tbody>
+  </table>
+</div>
